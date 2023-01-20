@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button, theme, withGalio, GalioProvider } from 'galio-framework';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LoginScreen } from './pages/login';
-import { RegisterScreen } from './pages/register';
-import { HomeScreen } from './pages/dashboard';
+import { LoginScreen } from './pages/Login';
+import { HomeScreen } from './pages/Dashboard';
+import { RegisterScreen } from './pages/Register';
 
 /// Theme reference https://galio.io/docs/#/components/input?id=props
 
