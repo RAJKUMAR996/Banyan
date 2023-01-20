@@ -8,13 +8,13 @@ import AppContainer from './AppNavigator';
 
 class App extends React.Component {
   render() {
-    return (<GalioProvider theme={{COLORS:{PRIMARY:'#B23AFC',THEME:'#B23AFC'}}}><AppContainer /></GalioProvider>);
+    return (<GalioProvider theme={{ COLORS: { PRIMARY: '#6b88f2', THEME: '#6b88f2' } }}><AppContainer /></GalioProvider>);
   }
 }
 
 export default withGalio(App, styles);
 
-const styles  = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
