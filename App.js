@@ -3,7 +3,7 @@ import { Button, theme, withGalio, GalioProvider } from 'galio-framework';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from './pages/login';
-import { RegisterScreen } from './pages/Register';
+import { RegisterScreen } from './pages/register';
 import { HomeScreen } from './pages/dashboard';
 
 /// Theme reference https://galio.io/docs/#/components/input?id=props

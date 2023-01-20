@@ -1,6 +1,6 @@
 import { Button, theme, withGalio, GalioProvider } from 'galio-framework';
 import { Input, Block } from 'galio-framework';
-export const style = { flex: 1, alignItems: 'center',padding:15, justifyContent: 'center' };
+const style = { flex: 1, alignItems: 'center',padding:15, justifyContent: 'center' };
 export function RegisterScreen({ navigation }) {
     return (
       <View style={style}>
