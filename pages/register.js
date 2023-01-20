@@ -1,19 +1,21 @@
-import { Button, theme, withGalio, GalioProvider } from 'galio-framework';
-import { StyleSheet, Text, View } from 'react-native';
-import { Input, Block } from 'galio-framework';
-const style = { flex: 1, alignItems: 'center',padding:15, justifyContent: 'center' };
-export function RegisterScreen({ navigation }) {
-    return (
-      <View style={style}>
-        <Text>Register</Text>
-  
-        <Input rounded placeholder='Email' />
-        <Input rounded password viewPass placeholder='Password' />
-        <Input rounded password viewPass placeholder='Confirm Password' />
-        <Button
-          onPress={() => navigation.navigate('Home')}
-        >Register</Button>
-      </View>
-    );
-  }
+import { Input, Button, theme, withGalio, GalioProvider } from 'galio-framework';
+import { Component } from 'react';
+import { Text, View } from 'react-native';
+const style = { flex: 1, alignItems: 'center', padding: 15, justifyContent: 'center' };
 
+class RegisterScreen extends Component {
+    render() {
+        return (
+            <View style={style}>
+                <Text>Register</Text>
+                <Input placeholder='Email' />
+                <Input password viewPass placeholder='Password' />
+                <Input password viewPass placeholder='Confirm Password' />
+                <Button
+                    onPress={() => this.props.navigation.navigate('Home')}
+                >Register</Button>
+            </View>
+        );
+    }
+}
+export default RegisterScreen;
