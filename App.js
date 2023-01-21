@@ -8,7 +8,7 @@ import AppContainer from './AppNavigator';
 
 class App extends React.Component {
   render() {
-    return (<GalioProvider theme={{ COLORS: { PRIMARY: '#6b88f2', THEME: '#6b88f2' } }}><AppContainer /></GalioProvider>);
+    return (<GalioProvider theme={{ COLORS: { PRIMARY: '#2e3982', THEME: '#6b88f2' } }}><AppContainer /></GalioProvider>);
   }
 }
 
