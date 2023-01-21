@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, doc, setDoc } from 'firebase/firestore';
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 
@@ -15,10 +15,35 @@ const firebaseConfig = {
     measurementId: "G-61YH4P7GJ0"
 };
 
-const app = initializeApp(firebaseConfig, 'banyan');
-const db = getFirestore(app);
-export function getcollection(name = 'PersonalInfo') {
-    const col = collection(db, name);
-    const recentMessagesQuery = query(col, null, limit(12));
-    return getDocs(recentMessagesQuery)
+/**
+ * new DataHelper().getAll(undefined,where("Email",'==', "Partner@mailinator.com")).then((res) => {
+            res.docs.forEach(r => {
+                console.log("data", r.data());
+            });
+            this.props.navigation.navigate('Home');
+        });
+ */
+// For fireBase reference 
+// https://firebase.google.com/docs/firestore/query-data/get-data?hl=en&authuser=0
+export class DataHelper {
+    #app;
+    #db;
+    #instance;
+    constructor() {
+        if (this.#instance) return this.#instance;
+        this.#app = initializeApp(firebaseConfig, 'banyan');
+        this.#db = getFirestore(this.#app);
+        this.#instance = this;
+    }
+
+    getAll(name = 'PersonalInfo', quries = null) {
+        const col = collection(this.#db, name);
+        const recentMessagesQuery = query(col, quries);
+        return getDocs(recentMessagesQuery);
+    }
+
+    async setData(collection='PersonalInfo', pathSegment, data={}) {
+        await setDoc(doc(this.#db, collection, pathSegment), data, { merge: true });
+    }
+
 }
