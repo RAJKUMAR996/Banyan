@@ -1,29 +1,17 @@
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button, theme, withGalio, GalioProvider } from 'galio-framework';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LoginScreen } from './pages/Login';
-import { HomeScreen } from './pages/Dashboard';
-import  Familytree  from './pages/Familytree';
-import { RegisterScreen } from './pages/Register';
+import AppContainer from './AppNavigator';
+
 
 /// Theme reference https://galio.io/docs/#/components/input?id=props
 
-
-const Stack = createNativeStackNavigator();
-
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Welcome to Banyan', headerTitleAlign: 'center', }} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="FamilyTree" component={Familytree} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+class App extends React.Component {
+  render() {
+    return (<GalioProvider theme={{ COLORS: { PRIMARY: '#6b88f2', THEME: '#6b88f2' } }}><AppContainer /></GalioProvider>);
+  }
 }
+
 export default withGalio(App, styles);
 
 const styles = StyleSheet.create({
@@ -32,6 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     justifyContent: 'center',
+    backgroundColor: theme.COLORS.PRIMARY
   },
   Button: {
     borderRadius: 20

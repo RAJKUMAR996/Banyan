@@ -1,27 +1,36 @@
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button, theme, withGalio, GalioProvider } from 'galio-framework';
-import { Input, Block } from 'galio-framework';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-export const style = { flex: 1, alignItems: 'center',padding:15, justifyContent: 'center' };
+import React from 'react';
+import { View, Image } from 'react-native';
 
-export function LoginScreen({ navigation }) {
-    return (
-        <View style={style}>
-            <Text>Logo</Text>
-            <Text>Welcome to Banyan!</Text>
+import { Block, Toast, Button, Card, Icon, Input, NavBar, Text } from 'galio-framework';
+const style = { flex: 1, alignItems: 'center', padding: 15, justifyContent: 'center' };
 
-            <Input rounded placeholder='user name' />
-            <Input rounded password viewPass placeholder='password' />
-            <Button
-                onPress={() => navigation.navigate('Home')}
-            >Login</Button>
-            <Button
-                onPress={() => navigation.navigate('Register')}
-            >Register</Button>
-        </View>
-    );
+class LoginScreen extends React.Component {
+
+    render() {
+        return (
+            <View style={style}>
+                  <Image
+          style={{
+            width: 75,
+            height: 75,borderRadius:50
+          }}
+          source={require('../assets/splash.png')}
+        />
+                <Text>Welcome to Banyan!</Text>
+
+                <Input rounded placeholder='user name' />
+                <Input rounded password viewPass placeholder='password' />
+                <View style={{ display: 'flex' }}><Button size="small"
+                    onPress={() => this.props.navigation.navigate('Home')}
+                >Login</Button>
+                    <Button size="small"
+                        onPress={() => this.props.navigation.navigate('Register')}
+                    >Register</Button></View>
+            </View>
+        );
+    }
 }
+export default LoginScreen;
+
 
