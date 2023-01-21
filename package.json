@@ -9,12 +9,17 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^16.5.1",
+    "@react-native-firebase/firestore": "^16.5.1",
     "@react-navigation/native-stack": "^6.9.8",
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "galio-framework": "^0.8.0",
     "react": "18.1.0",
-    "react-native": "0.70.5"
+    "react-icons": "^4.7.1",
+    "react-native": "0.70.5",
+    "react-native-firebase": "^5.6.0",
+    "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

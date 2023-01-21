@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from './pages/Login';
 import { HomeScreen } from './pages/Dashboard';
+import  Familytree  from './pages/Familytree';
 import { RegisterScreen } from './pages/Register';
 
 /// Theme reference https://galio.io/docs/#/components/input?id=props
@@ -18,6 +19,7 @@ function App() {
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Welcome to Banyan', headerTitleAlign: 'center', }} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="FamilyTree" component={Familytree} />
       </Stack.Navigator>
     </NavigationContainer>
   );
