@@ -1,12 +1,14 @@
 
+
+
 import { Component } from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import {  Card, theme, Block, styles } from 'galio-framework';
+import { Card, theme, Block, styles } from 'galio-framework';
 import { DataHelper } from '../services/firebase.service';
 const style = { padding: 15 };
 
-class FamilyList extends Component {
-  
+class FileUpload extends Component {
+
     constructor(props) {
         super(props);
         this.state = { data: [] }
@@ -42,7 +44,7 @@ class FamilyList extends Component {
         }
         return (
             <ScrollView style={style}>
-                <Text style={{marginBottom:20}}>Welcome to home!</Text>
+                <Text style={{ marginBottom: 20 }}>Welcome to home!</Text>
                 {data}
             </ScrollView>
         );
@@ -50,4 +52,4 @@ class FamilyList extends Component {
 }
 
 
-export default FamilyList;
+export default FileUpload;

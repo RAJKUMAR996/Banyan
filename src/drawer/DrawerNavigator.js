@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../pages/dashboard";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/FontAwesome';
+import User from "../pages/user";
 
 function NotificationsScreen({ navigation }) {
   return (
@@ -20,10 +21,10 @@ function SignOutUser({ navigation }) {
     [
       {
         text: "No",
-        onPress: () => {navigation.goBack(); console.log("Cancel Pressed")},
+        onPress: () => { navigation.goBack(); console.log("Cancel Pressed") },
         style: "cancel",
       },
-      { text: "Yes", onPress: () => {BackHandler.exitApp(); navigation.goBack(); } },
+      { text: "Yes", onPress: () => { BackHandler.exitApp(); navigation.goBack(); } },
     ],
     { cancelable: false }
   );
@@ -31,84 +32,98 @@ function SignOutUser({ navigation }) {
 }
 
 const Drawer = createDrawerNavigator();
-const DrawerNavigator = () => {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen
-        name="Dashboard"
-        component={HomeScreen}
-        options={{ drawerLabel: "Dashboard",
-        drawerIcon: ({ focused, size }) => (
-          <Icon
-              name="home"
-              size={size}
-              color={focused ? 'red' : 'black'}
-          />
-      ) }}
-      />
-      {/* <i class="fa-regular fa-comment"></i> */}
-      <Drawer.Screen
-        name="Notifications"
-        component={NotificationsScreen}
-        options={{ drawerLabel: "Notifications" ,
-        drawerIcon: ({ focused, size }) => (
-          <Icon
-              name="comment"
-              size={size}
-              color={focused ? 'red' : 'black'}
-          />
-      )}}
-      />
-      <Drawer.Screen
-        name="Profile"
-        component={NotificationsScreen}
-        options={{ drawerLabel: "Profile" ,
-        drawerIcon: ({ focused, size }) => (
-          <Icon
-              name="user"
-              size={size}
-              color={focused ? 'red' : 'black'}
-          />
-      )}}
-      />
-      <Drawer.Screen
-        name="Family Tree"
-        component={NotificationsScreen}
-        options={{ drawerLabel: "Family Tree",
-        drawerIcon: ({ focused, size }) => (
-          <Icon
-              name="tree"
-              size={size}
-              color={focused ? 'red' : 'black'}
-          />
-      ) }}
-      />
-      <Drawer.Screen
-        name="Search for Members"
-        component={NotificationsScreen}
-        options={{ drawerLabel: "Search for Members" ,
-        drawerIcon: ({ focused, size }) => (
-          <Icon
-              name="search"
-              size={size}
-              color={focused ? 'red' : 'black'}
-          />
-      )}}
-      />
-      <Drawer.Screen
-        name="Log Out"
-        component={SignOutUser}
-        options={{ drawerLabel: "Log Out",
-        drawerIcon: ({ focused, size }) => (
-          <Icons
-              name="close"
-              size={size}
-              color={focused ? 'red' : 'black'}
-          />
-      ) }}
-      />
-    </Drawer.Navigator>
-  );
+class DrawerNavigator extends React.Component {
+  render() {
+    return (
+      <Drawer.Navigator>
+        <Drawer.Screen
+          name="Dashboard"
+          component={HomeScreen}
+          options={{
+            drawerLabel: "Dashboard",
+            drawerIcon: ({ focused, size }) => (
+              <Icon
+                name="home"
+                size={size}
+                color={focused ? 'red' : 'black'}
+              />
+            )
+          }}
+        />
+        {/* <i class="fa-regular fa-comment"></i> */}
+        <Drawer.Screen
+          name="Notifications"
+          component={NotificationsScreen}
+          options={{
+            drawerLabel: "Notifications",
+            drawerIcon: ({ focused, size }) => (
+              <Icon
+                name="comment"
+                size={size}
+                color={focused ? 'red' : 'black'}
+              />
+            )
+          }}
+        />
+        <Drawer.Screen
+          name="Profile"
+          component={User}
+          options={{
+            drawerLabel: "Profile",
+            drawerIcon: ({ focused, size }) => (
+              <Icon
+                name="user"
+                size={size}
+                color={focused ? 'red' : 'black'}
+              />
+            )
+          }}
+        />
+        <Drawer.Screen
+          name="Family Tree"
+          component={NotificationsScreen}
+          options={{
+            drawerLabel: "Family Tree",
+            drawerIcon: ({ focused, size }) => (
+              <Icon
+                name="tree"
+                size={size}
+                color={focused ? 'red' : 'black'}
+              />
+            )
+          }}
+        />
+        <Drawer.Screen
+          name="Search for Members"
+          component={NotificationsScreen}
+          options={{
+            drawerLabel: "Search for Members",
+            drawerIcon: ({ focused, size }) => (
+              <Icon
+                name="search"
+                size={size}
+                color={focused ? 'red' : 'black'}
+              />
+            )
+          }}
+        />
+        <Drawer.Screen
+          name="Log Out"
+          component={SignOutUser}
+          options={{
+            drawerLabel: "Log Out",
+            drawerIcon: ({ focused, size }) => (
+              <Icons
+                name="close"
+                size={size}
+                color={focused ? 'red' : 'black'}
+              />
+            )
+          }}
+        />
+      </Drawer.Navigator>
+    );
+  }
 };
 
 export default DrawerNavigator;

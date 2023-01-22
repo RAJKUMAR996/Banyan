@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { View, Image } from 'react-native';
-import { where } from "firebase/firestore";
 
 import { Button, Input, Text } from 'galio-framework';
 import { DataHelper } from '../services/firebase.service';
@@ -24,7 +23,8 @@ class LoginScreen extends React.Component {
     login() {
         console.log('email', this.state.email);
         this.setState({ showError: false });
-        this.props.navigation.navigate('Dashboard');
+
+        this.props.navigation.navigate('Drawer');
         // below code to login
         // const data = new DataHelper().getAll('PersonalInfo', where("Email", '==', this.state.email?.toLowerCase())).then((res) => {
         //     if (res?.length && res[0].Email?.toLowerCase() == this.state.email?.toLowerCase()) {
