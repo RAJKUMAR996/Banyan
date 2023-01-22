@@ -1,47 +1,47 @@
 [{
-    "name":"Eswaraiyah",
-    "spouse":"Eswari",
+    "name":"King",
+    "spouse":"Queen",
     "children":[
         {
-            "name":"Arjun",
-            "spouse":"Priya",
+            "name":"Bishop 1",
+            "spouse":"bishop 2",
             "children":[
                 {
-                    "name":"Nishaal",
+                    "name":"small bishop",
                     "spouse":null
                 }
             ]
         },
         {
-            "name":"Chander",
-            "spouse":"Pavani",
+            "name":"Knight",
+            "spouse":"knight",
             "children":[
                 {
-                    "name":"Doosik",
-                    "spouse":"Santhi",
+                    "name":"Small Knight",
+                    "spouse":"Knight Wife",
                     "children":[
                         {
-                            "name":"Prabha",
+                            "name":"Grand Knight",
                             "spouse":null
                         }
                     ]
                 },
                 {
-                    "name":"Sravani",
+                    "name":"Knight Daughter",
                     "spouse":null
                 }
             ]
         },
         {
-            "name":"Gunaseeli",
-            "spouse":"Anburose",
+            "name":"Rook",
+            "spouse":"rook",
             "children":[
                 {
-                    "name":"Johncy Arul",
+                    "name":"Small Rook 1",
                     "spouse":null
                 },
                 {
-                    "name":"Althumas",
+                    "name":"Small Rook 2",
                     "spouse":null
                 }
             ]
