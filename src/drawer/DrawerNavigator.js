@@ -5,6 +5,7 @@ import HomeScreen from "../pages/dashboard";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import NotificationScreen from '../pages/notification'
+import Search from "../pages/search";
 
 function NotificationsScreen({ navigation }) {
   return (
@@ -86,7 +87,7 @@ const DrawerNavigator = () => {
       />
       <Drawer.Screen
         name="Search for Members"
-        component={NotificationsScreen}
+        component={Search}
         options={{ drawerLabel: "Search for Members" ,
         drawerIcon: ({ focused, size }) => (
           <Icon
