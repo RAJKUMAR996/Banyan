@@ -36,14 +36,25 @@ export class DataHelper {
         this.#instance = this;
     }
 
-    getAll(name = '', quries = null) {
+    getAll(name = '', quries = null, withId = false) {
         return new Promise(async (resolve) => {
             const col = collection(this.#db, name);
+
             const recentMessagesQuery = query(col, quries);
+
             await getDocs(recentMessagesQuery).then(data => {
                 if (!data.empty) {
                     const res = data.docs.map(async doc => { return await doc.data() });
-                    Promise.all(res).then(r => { resolve(r) });
+                    Promise.all(res).then(r => {
+                        if (withId) {
+                            const d1 = r.map((d, i) => {
+                                const id = data.docs[i].id;
+                                return { [id]: d }
+                            });
+                            resolve(d1); return;
+                        }
+                        resolve(r);
+                    });
                     return;
                 }
                 resolve();
