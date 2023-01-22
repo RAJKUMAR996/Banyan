@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { DataHelper } from "../services/firebase.service";
 import { where } from "firebase/firestore";
-import { NavBar, Card, theme, Block } from "galio-framework";
+import { Card, theme } from "galio-framework";
 import {
   ScrollView,
   Text,
   StyleSheet,
   View,
-  FlatList,
   TextInput,
   ActivityIndicator,
-  Alert,
 } from "react-native";
 //import all the components we are going to use.
 const style = { padding: 15 };
@@ -95,7 +93,7 @@ class Search extends Component {
               backgroundColor: "#fff",
             }}
             title={family.Name}
-            caption={"Owner: " + family.Owner}
+            caption={"Email: " + family.Email}
             avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
             imageStyle={{ borderRadius: 10 }}
           ></Card>
@@ -104,7 +102,7 @@ class Search extends Component {
     }
     return (
       <ScrollView style={style}>
-        <Text style={{ marginBottom: 20 }}>Search Members from family: {this.state.FID}</Text>
+        <Text style={{ marginBottom: 20 }}>Search members from family: {this.state.FID}</Text>
         <TextInput
           style={styles.textInputStyle}
           onChangeText={(text) => this.SearchFilterFunction(text)}
