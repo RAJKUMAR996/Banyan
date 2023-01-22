@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { ScrollView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FileUpload from '../components/fileUpload';
 import PersonalInfo from '../components/personalInfo';

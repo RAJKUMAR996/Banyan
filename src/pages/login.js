@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { View, Image } from 'react-native';
-
+import { where } from 'firebase/firestore';
 import { Button, Input, Text } from 'galio-framework';
 import { DataHelper } from '../services/firebase.service';
 const style = { flex: 1, alignItems: 'center', padding: 15, justifyContent: 'center' };
@@ -21,25 +21,18 @@ class LoginScreen extends React.Component {
         this.setState({ titleText: "Bird's Nest [pressed]" });
     };
     login() {
-        console.log('email', this.state.email);
         this.setState({ showError: false });
 
-        this.props.navigation.navigate('Drawer');
         // below code to login
-        // const data = new DataHelper().getAll('PersonalInfo', where("Email", '==', this.state.email?.toLowerCase())).then((res) => {
-        //     if (res?.length && res[0].Email?.toLowerCase() == this.state.email?.toLowerCase()) {
-        //         this.props.navigation.navigate('Home');
-        //     } else {
-        //         this.setState({ showError: true });
-        //     }
-        // });
+        const data = new DataHelper().getAll('PersonalInfo', where("Email", '==', this.state.email?.toLowerCase())).then((res) => {
+            if (res?.length && res[0].Email?.toLowerCase() == this.state.email?.toLowerCase()) {
+                this.props.navigation.navigate('Drawer');
+            } else {
+                this.setState({ showError: true });
+            }
+        });
     }
-    handleChange(name, event) {
-        console.log('type', type);
-        value
 
-        this.setState({ [name]: processedData });
-    }
     render() {
         // const [email, onChangeEmail] = React.useState('');
         // const [password, onChangepassword] = React.useState('');
