@@ -31,7 +31,7 @@ class User extends Component {
                     })}
                 >
                     <Tab.Screen name="Pesonal Info" component={PersonalInfo} />
-                    <Tab.Screen name="Files" component={FamilyList} />
+                    <Tab.Screen name="Files" component={FileUpload} />
                 </Tab.Navigator>
         );
     }

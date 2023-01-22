@@ -21,8 +21,6 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    console.log("started firefetch");
-
     const data = new DataHelper()
       .getAll("PersonalInfo", where("FID", "==", this.state.FID))
       .then((data) => {
@@ -111,7 +109,7 @@ class Search extends Component {
           placeholder="Search Here"
         />
         {data}
-        {this.state.dataSource && this.state.text ? (
+        {!this.state.dataSource.length && this.state.text ? (
           <Text
             style={{
               marginBottom: 10,

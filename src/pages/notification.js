@@ -27,7 +27,6 @@ class NotificationScreen extends Component {
     getAllNotifications() {
         new DataHelper().getAll('Updates').then(data => {
             this.isLoaded = true;
-            console.log('data', data);
             this.setState({ data });
         });
     }
@@ -39,7 +38,7 @@ class NotificationScreen extends Component {
             PID: 'Oxirspr8ADT1dZuDxJJ8',
             Message: this.state.message
         }
-        new DataHelper().setData('Updates', firestoreAutoId() , data).then(() => { this.isLoaded = true }).catch(() => {this.setState({ showError: false }) });
+        new DataHelper().setData('Updates', firestoreAutoId(), data).then(() => { this.isLoaded = true; this.getAllNotifications(); this.setState({ message: '' }); }).catch(() => { this.setState({ showError: false }) });
     }
 
     render() {
@@ -54,6 +53,7 @@ class NotificationScreen extends Component {
                         title={content.Message}
                         avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
                         imageStyle={{ borderRadius: 10 }}
+                        caption={'con'}
                     >
 
                     </Card>
@@ -63,8 +63,8 @@ class NotificationScreen extends Component {
         return (<ScrollView style={{ padding: 10, backgroundColor: '#DAFFD5' }}>
             {data}
 
-            <Input rounded placeholder='Enter your update here' name='message' onChangeText={evt => { this.setState({ message: evt }) }} />
-            <Button size="large" onPress={() => this.sendMsg()}>Send To Family</Button>
+            <Input rounded placeholder='Enter your update here' name='message' value={this.state.message} onChangeText={evt => { this.setState({ message: evt }) }} />
+            <Button size="large" style={{ marginBottom: 30 }} onPress={() => this.sendMsg()}>Send To Family</Button>
         </ScrollView>);
     }
 
