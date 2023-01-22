@@ -1,0 +1,50 @@
+[{
+    "name":"King",
+    "spouse":"Queen",
+    "children":[
+        {
+            "name":"Bishop 1",
+            "spouse":"bishop 2",
+            "children":[
+                {
+                    "name":"small bishop",
+                    "spouse":null
+                }
+            ]
+        },
+        {
+            "name":"Knight",
+            "spouse":"knight",
+            "children":[
+                {
+                    "name":"Small Knight",
+                    "spouse":"Knight Wife",
+                    "children":[
+                        {
+                            "name":"Grand Knight",
+                            "spouse":null
+                        }
+                    ]
+                },
+                {
+                    "name":"Knight Daughter",
+                    "spouse":null
+                }
+            ]
+        },
+        {
+            "name":"Rook",
+            "spouse":"rook",
+            "children":[
+                {
+                    "name":"Small Rook 1",
+                    "spouse":null
+                },
+                {
+                    "name":"Small Rook 2",
+                    "spouse":null
+                }
+            ]
+        }
+    ]
+}]
