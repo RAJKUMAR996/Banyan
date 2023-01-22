@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../pages/dashboard";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/FontAwesome';
+import NotificationScreen from '../pages/notification'
 
 function NotificationsScreen({ navigation }) {
   return (
@@ -48,8 +49,8 @@ const DrawerNavigator = () => {
       />
       {/* <i class="fa-regular fa-comment"></i> */}
       <Drawer.Screen
-        name="Notifications"
-        component={NotificationsScreen}
+        name="Latest Notifications"
+        component={NotificationScreen}
         options={{ drawerLabel: "Notifications" ,
         drawerIcon: ({ focused, size }) => (
           <Icon
@@ -60,9 +61,9 @@ const DrawerNavigator = () => {
       )}}
       />
       <Drawer.Screen
-        name="Profile"
-        component={NotificationsScreen}
-        options={{ drawerLabel: "Profile" ,
+         name="Profile"
+         component={NotificationsScreen}
+         options={{ drawerLabel: "Profile" ,
         drawerIcon: ({ focused, size }) => (
           <Icon
               name="user"

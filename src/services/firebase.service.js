@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, doc, setDoc, addDoc } from 'firebase/firestore';
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 
@@ -55,5 +55,17 @@ export class DataHelper {
     async setData(collection = '', pathSegment, data = {}) {
         await setDoc(doc(this.#db, collection, pathSegment), data, { merge: true });
     }
-
 }
+
+export const firestoreAutoId = () => {
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  
+    let autoId = ''
+  
+    for (let i = 0; i < 20; i++) {
+      autoId += CHARS.charAt(
+        Math.floor(Math.random() * CHARS.length)
+      )
+    }
+    return autoId
+  }
