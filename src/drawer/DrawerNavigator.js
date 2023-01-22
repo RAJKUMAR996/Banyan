@@ -2,6 +2,7 @@ import { Button, View, BackHandler, Alert } from "react-native";
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../pages/dashboard";
+import TreeView from '../pages/treeView.js';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/FontAwesome';
 
@@ -73,7 +74,7 @@ const DrawerNavigator = () => {
       />
       <Drawer.Screen
         name="Family Tree"
-        component={NotificationsScreen}
+        component={TreeView}
         options={{ drawerLabel: "Family Tree",
         drawerIcon: ({ focused, size }) => (
           <Icon
