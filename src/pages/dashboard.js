@@ -1,9 +1,9 @@
 
 import { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, theme, withGalio, GalioProvider } from 'galio-framework';
+import { Button, Card, withGalio, GalioProvider } from 'galio-framework';
 import { DataHelper } from '../services/firebase.service';
-const style = { flex: 1, alignItems: 'center', padding: 15, justifyContent: 'center' };
+const style = { padding: 15 };
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -28,9 +28,12 @@ class HomeScreen extends Component {
             data = this.state?.data?.map((family, i) => {
                 return (
                     <View key={`family-${i}`}>
-                        <Text>{i + 1}</Text>
-                        <Text>Name: {family.Name}</Text>
-                        <Text>Owner: {family.Owner}</Text>
+                        <Card
+                            style={{ padding: 10, backgroundColor: '#fff' }}
+                        >
+                            <Text>Name: {family.Name}</Text>
+                            <Text>Owner: {family.Owner}</Text>
+                        </Card>
                     </View>);
             });
         }
