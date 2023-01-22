@@ -1,54 +1,39 @@
 
 import { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
-import { Button, Card, theme, Block, styles } from 'galio-framework';
-import { DataHelper } from '../services/firebase.service';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import FamilyList from './families';
+import PersonalInfo from './personalInfo';
 const style = { padding: 15 };
-
+const Tab = createBottomTabNavigator();
 class HomeScreen extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { data: [] }
-    }
-    isLoaded = false;
-    componentDidMount() {
-        this.getAllFamilies();
-    }
-    getAllFamilies() {
-        new DataHelper().getAll('Families').then(data => {
-            this.isLoaded = true;
-            this.setState({ data });
-        });
-    }
-
     render() {
-        let data = [];
-        if (this.isLoaded) {
-            data = this.state?.data?.map((family, i) => {
-                return (
-                    <Card key={`test-${i}`}
-                        // borderless
-                        style={{ padding: theme.SIZES.BASE / 2, marginBottom: 20, backgroundColor: '#fff' }}
-                        title={family.Name}
-                        caption={"Owner: " + family.Owner}
-                        avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
-                        // footerStyle={{marginBottom:10}}
-                        imageStyle={{ borderRadius: 10 }}
-                    // image="https://images.unsplash.com/photo-1497802176320-541c8e8de98d?&w=1600&h=900&fit=crop&crop=entropy&q=300"
-                    >
-
-                    </Card>
-                );
-            });
-        }
         return (
-            <ScrollView style={style}>
-                <Text style={{marginBottom:20}}>Welcome to home!</Text>
-                {data}
-            </ScrollView>
+            <Tab.Navigator
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size }) => {
+                        let iconName;
+
+                        if (route.name === 'Home') {
+                            iconName = focused
+                                ? 'ios-home'
+                                : 'ios-home-outline';
+                        } else if (route.name === 'Profile') {
+                            iconName = focused ? 'ios-person' : 'ios-person-outline';
+                        }
+
+                        // You can return any component that you like here!
+                        return <Ionicons name={iconName} size={size} color={color} />;
+                    },
+                    tabBarActiveTintColor: 'tomato',
+                    tabBarInactiveTintColor: 'gray',
+                })}
+            >
+                <Tab.Screen name="Home" component={FamilyList} />
+                <Tab.Screen name="Profile" component={PersonalInfo} />
+            </Tab.Navigator>
         );
     }
 }
-
 
 export default HomeScreen;
