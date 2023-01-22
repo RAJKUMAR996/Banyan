@@ -2,9 +2,12 @@ import { Button, View, BackHandler, Alert } from "react-native";
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../pages/dashboard";
+import TreeView from '../pages/treeView.js';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import User from "../pages/user";
+import NotificationScreen from '../pages/notification'
+import Search from "../pages/search";
 
 function NotificationsScreen({ navigation }) {
   return (
@@ -52,8 +55,8 @@ class DrawerNavigator extends React.Component {
         />
         {/* <i class="fa-regular fa-comment"></i> */}
         <Drawer.Screen
-          name="Notifications"
-          component={NotificationsScreen}
+          name="Latest Notifications"
+          component={NotificationScreen}
           options={{
             drawerLabel: "Notifications",
             drawerIcon: ({ focused, size }) => (
@@ -81,7 +84,7 @@ class DrawerNavigator extends React.Component {
         />
         <Drawer.Screen
           name="Family Tree"
-          component={NotificationsScreen}
+          component={TreeView}
           options={{
             drawerLabel: "Family Tree",
             drawerIcon: ({ focused, size }) => (
@@ -95,7 +98,7 @@ class DrawerNavigator extends React.Component {
         />
         <Drawer.Screen
           name="Search for Members"
-          component={NotificationsScreen}
+          component={Search}
           options={{
             drawerLabel: "Search for Members",
             drawerIcon: ({ focused, size }) => (
