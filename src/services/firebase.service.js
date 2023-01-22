@@ -36,13 +36,23 @@ export class DataHelper {
         this.#instance = this;
     }
 
-    getAll(name = 'PersonalInfo', quries = null) {
-        const col = collection(this.#db, name);
-        const recentMessagesQuery = query(col, quries);
-        return getDocs(recentMessagesQuery);
+    getAll(name = '', quries = null) {
+        return new Promise(async (resolve) => {
+            const col = collection(this.#db, name);
+            const recentMessagesQuery = query(col, quries);
+            await getDocs(recentMessagesQuery).then(data => {
+                if (!data.empty) {
+                    const res = data.docs.map(async doc => { return await doc.data() });
+                    Promise.all(res).then(r => { resolve(r) });
+                    return;
+                }
+                resolve();
+            });
+
+        });
     }
 
-    async setData(collection='PersonalInfo', pathSegment, data={}) {
+    async setData(collection = '', pathSegment, data = {}) {
         await setDoc(doc(this.#db, collection, pathSegment), data, { merge: true });
     }
 

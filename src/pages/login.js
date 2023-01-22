@@ -24,16 +24,21 @@ class LoginScreen extends React.Component {
     login() {
         console.log('email', this.state.email);
         this.setState({ showError: false });
-        const data = new DataHelper().getAll(undefined, where("Email", '==', this.state.email)).then((res) => {
-            const response = res.docs.map(r => r.data());
-            console.log('res', response);
+        this.props.navigation.navigate('Home');
+        // below code to login
+        // const data = new DataHelper().getAll('PersonalInfo', where("Email", '==', this.state.email?.toLowerCase())).then((res) => {
+        //     if (res?.length && res[0].Email?.toLowerCase() == this.state.email?.toLowerCase()) {
+        //         this.props.navigation.navigate('Home');
+        //     } else {
+        //         this.setState({ showError: true });
+        //     }
+        // });
+    }
+    handleChange(name, event) {
+        console.log('type', type);
+        value
 
-            if (response.length && response[0].Email?.toLowerCase() == this.state.email?.toLowerCase()) {
-                this.props.navigation.navigate('Home');
-            } else {
-                this.setState({ showError: true });
-            }
-        });
+        this.setState({ [name]: processedData });
     }
     render() {
         // const [email, onChangeEmail] = React.useState('');
@@ -49,7 +54,7 @@ class LoginScreen extends React.Component {
                 />
                 <Text>Welcome to Banyan!</Text>
 
-                <Input rounded placeholder='user name' onChangeText={evt => { this.setState({ email: evt?.toLowerCase() }) }}
+                <Input rounded placeholder='user name' name='email' onChangeText={evt => { this.setState({ email: evt }) }}
                     value={this.state.email} />
                 <Input rounded password viewPass placeholder='password' onChangeText={evt => { this.setState({ password: evt }) }}
                     value={this.state.password} />
