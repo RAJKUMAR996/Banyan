@@ -22,7 +22,8 @@ class LoginScreen extends React.Component {
                 <Image
                     style={{
                         width: 75,
-                        height: 75, borderRadius: 50
+                        height: 75, borderRadius: 50,
+                        backgroundColor: "#98FB98"
                     }}
                     source={require('../../assets/logo.png')}
                 />

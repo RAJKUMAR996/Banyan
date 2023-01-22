@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     padding: 10,
-    justifyContent: 'center',
-    backgroundColor: theme.COLORS.PRIMARY
+    justifyContent: 'center'
   },
   Button: {
     borderRadius: 20
