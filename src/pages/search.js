@@ -16,15 +16,24 @@ class Search extends Component {
   constructor(props) {
     super(props);
     //setting default state
-    this.state = { isLoading: true, text: "", FID: "Family1" };
+    this.state = { isLoading: true, text: "", FID: "Family1", dataSource: [] };
     this.arrayholder = [];
   }
 
   componentDidMount() {
     const data = new DataHelper()
-      .getAll("PersonalInfo", where("FID", "==", this.state.FID))
-      .then((data) => {
-        console.log(data);
+      .getAll("PersonalInfo", where("FID", "==", this.state.FID), true)
+      .then((dataraw) => {
+        let data = dataraw.map(d => {
+          const q = Object.keys(d);
+          let processData = {}
+          q.forEach(element => {
+            processData = { ...d[element], ...{ id: element } }
+          });
+          return processData;
+        });
+        data = data.length ? data : [];
+
         if (
           data?.length &&
           data[0].FID?.toLowerCase() == this.state.FID?.toLowerCase()
@@ -48,7 +57,6 @@ class Search extends Component {
   }
   SearchFilterFunction(text) {
     const newData = this.arrayholder.filter(function (item) {
-      console.log("SearchFilterFunction", item);
       const itemData = item.Name ? item.Name.toUpperCase() : "".toUpperCase();
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
@@ -70,6 +78,11 @@ class Search extends Component {
     );
   };
 
+  navigateToProfile(data) {
+    this.setState({...{ id: data.id }})
+    this.props.navigation.navigate('Profile', { id: data.id });
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -83,7 +96,7 @@ class Search extends Component {
     if (!this.state.isLoading) {
       data = this.state?.dataSource?.map((family, i) => {
         return (
-          <View key={'view-'+i} onTouchEnd={()=>{this.props.navigation.navigate('Profile')}} >
+          <View key={'view-' + i} onTouchEnd={() => { this.navigateToProfile(family) }} >
             <Card
               key={`card-${i}`}
               style={{
@@ -111,7 +124,7 @@ class Search extends Component {
           placeholder="Search Here"
         />
         {data}
-        {!this.state.dataSource.length && this.state.text ? (
+        {!this.state.dataSource?.length && this.state.text ? (
           <Text
             style={{
               marginBottom: 10,

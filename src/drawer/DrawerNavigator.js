@@ -38,7 +38,7 @@ const Drawer = createDrawerNavigator();
 class DrawerNavigator extends React.Component {
   render() {
     return (
-      <Drawer.Navigator>
+      <Drawer.Navigator > 
         <Drawer.Screen
           name="Dashboard"
           component={HomeScreen}
