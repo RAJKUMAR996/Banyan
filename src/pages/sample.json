@@ -1,47 +1,47 @@
 [{
-    "name":"King",
-    "spouse":"Queen",
+    "name":"Pachayappan",
+    "spouse":"Indra",
     "children":[
         {
-            "name":"Bishop 1",
-            "spouse":"bishop 2",
+            "name":"Anand",
+            "spouse":"Ishwarya",
             "children":[
                 {
-                    "name":"small bishop",
+                    "name":"Kutty",
                     "spouse":null
                 }
             ]
         },
         {
-            "name":"Knight",
-            "spouse":"knight",
+            "name":"Kalai",
+            "spouse":"Karthi",
             "children":[
                 {
-                    "name":"Small Knight",
-                    "spouse":"Knight Wife",
+                    "name":"Neha",
+                    "spouse":"Sundar",
                     "children":[
                         {
-                            "name":"Grand Knight",
+                            "name":"Meha",
                             "spouse":null
                         }
                     ]
                 },
                 {
-                    "name":"Knight Daughter",
+                    "name":"Raj",
                     "spouse":null
                 }
             ]
         },
         {
-            "name":"Rook",
-            "spouse":"rook",
+            "name":"Karthi",
+            "spouse":"Pushpa",
             "children":[
                 {
-                    "name":"Small Rook 1",
+                    "name":"Ganesh",
                     "spouse":null
                 },
                 {
-                    "name":"Small Rook 2",
+                    "name":"Murugan",
                     "spouse":null
                 }
             ]
