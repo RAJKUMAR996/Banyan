@@ -5,7 +5,7 @@ const style = { padding: 15 };
 class HomeScreen extends Component {
     render() {
         return (
-            <FamilyList/>
+            <FamilyList navigation={this.props.navigation}/>
         );
     }
 }

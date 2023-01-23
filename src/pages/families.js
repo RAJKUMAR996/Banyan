@@ -1,12 +1,12 @@
 
 import { Component } from 'react';
 import { ScrollView, Text, View } from 'react-native';
-import {  Card, theme, Block, styles } from 'galio-framework';
+import { Card, theme } from 'galio-framework';
 import { DataHelper } from '../services/firebase.service';
+
 const style = { padding: 15 };
 
 class FamilyList extends Component {
-  
     constructor(props) {
         super(props);
         this.state = { data: [] }
@@ -22,27 +22,32 @@ class FamilyList extends Component {
         });
     }
 
+    navigateToFamily() {
+        this.props.navigation.navigate('Family Tree');
+    }
+
     render() {
         let data = [];
         if (this.isLoaded) {
             data = this.state?.data?.map((family, i) => {
                 return (
-                    <Card key={`test-${i}`}
-                        // borderless
-                        style={{ padding: theme.SIZES.BASE / 2, marginBottom: 20, backgroundColor: '#fff' }}
-                        title={family.Name}
-                        caption={"Owner: " + family.Owner}
-                        avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
-                        imageStyle={{ borderRadius: 10 }}
-                    >
-
-                    </Card>
+                    <View key={`block-${i}`} onTouchEnd={() => this.navigateToFamily()} >
+                        <Card key={`card-${i}`}
+                            // borderless
+                            style={{ padding: theme.SIZES.BASE / 2, marginBottom: 20, backgroundColor: '#fff' }}
+                            title={family.Name}
+                            caption={"Owner: " + family.Owner}
+                            avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
+                            imageStyle={{ borderRadius: 10 }}
+                        >
+                        </Card>
+                    </View>
                 );
             });
         }
         return (
             <ScrollView style={style}>
-                <Text style={{marginBottom:20}}>Welcome to home!</Text>
+                <Text style={{ marginBottom: 20 }}>Welcome to home!</Text>
                 {data}
             </ScrollView>
         );
