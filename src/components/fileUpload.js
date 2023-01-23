@@ -1,55 +1,57 @@
 
 
 
-import { Component } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { Component, useState } from 'react';
+import { ScrollView, Text, View, Button, Image } from 'react-native';
 import { Card, theme, Block, styles } from 'galio-framework';
 import { DataHelper } from '../services/firebase.service';
-const style = { padding: 15 };
+import * as DocumentPicker from 'expo-document-picker';
+import * as ImagePicker from 'expo-image-picker';
+export const style = { flex:1, alignItems: 'center', justifyContent: 'center'}
 
 class FileUpload extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { data: [] }
-    }
-    isLoaded = false;
-    componentDidMount() {
-        this.getAllFamilies();
-    }
-    getAllFamilies() {
-        new DataHelper().getAll('Families').then(data => {
-            this.isLoaded = true;
-            this.setState({ data });
+   
+        state = {
+            image: null,
+          };
+   
+    pickDocument = async () => {
+        let result = await DocumentPicker.getDocumentAsync({
+            
         });
+        alert(result.uri);
+        
     }
 
-    render() {
-        let data = [];
-        if (this.isLoaded) {
-            data = this.state?.data?.map((family, i) => {
-                return (
-                    <Card key={`test-${i}`}
-                        // borderless
-                        style={{ padding: theme.SIZES.BASE / 2, marginBottom: 20, backgroundColor: '#fff' }}
-                        title={family.Name}
-                        caption={"Owner: " + family.Owner}
-                        avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
-                        imageStyle={{ borderRadius: 10 }}
-                    >
+    pickImage=  async () =>{
+        let result = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: true,
+            aspect: [4, 3],
+        })
 
-                    </Card>
-                );
-            });
+        console.log(result);
+
+        if(!result.canceled){
+            this.setState({ image: result.assets[0].uri });
+            //setImage(result.assets[0].uri);
         }
+    }
+        render(){
+
+            let { image } = this.state;
         return (
-            <ScrollView style={style}>
-                <Text style={{ marginBottom: 20 }}>Welcome to home!</Text>
-                {data}
-            </ScrollView>
+            <View style={style}>
+                <View style={{flex:1}}>
+                    <Button title="Select Document" onPress={this.pickDocument} /></View>
+                <View style={{flex:1}}>
+                    <Button title="Pick an image" onPress={this.pickImage} />
+                    {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                </View>
+            </View>
         );
+
     }
 }
-
 
 export default FileUpload;
