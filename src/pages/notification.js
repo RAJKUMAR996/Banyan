@@ -46,21 +46,20 @@ class NotificationScreen extends Component {
         if (this.isLoaded) {
 
             data = this.state?.data?.map((content, i) => {
+                var notificationDate = Date(content.CreatedDate);
                 return (
                     <Card key={`test-${i}`}
-                        // borderless
-                        style={{ padding: theme.SIZES.BASE / 2, marginBottom: 20, backgroundColor: '#FFC0CB' }}
+                        style={{  marginBottom: 20 }}
                         title={content.Message}
                         avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
-                        imageStyle={{ borderRadius: 10 }}
-                        caption={'con'}
+                        imageStyle={{ borderRadius: 3 }}
+                        caption={notificationDate}
                     >
-
                     </Card>
                 );
             });
         }
-        return (<ScrollView style={{ padding: 10, backgroundColor: '#DAFFD5' }}>
+        return (<ScrollView style={{ padding: 10}}>
             {data}
 
             <Input rounded placeholder='Enter your update here' name='message' value={this.state.message} onChangeText={evt => { this.setState({ message: evt }) }} />
