@@ -1,0 +1,26 @@
+[{
+    "name":"Eswar",
+    "spouse":"Eswari",
+    "children":[
+        {
+            "name":"Arjun",
+            "spouse":"Priya",
+            "children":[
+                {
+                    "name":"Nishal",
+                    "spouse":null
+                }
+            ]
+        },
+        {
+            "name":"Chander",
+            "spouse":"Pavani",
+            "children":[
+                {
+                    "name":"Doosik",
+                    "spouse":null
+                }
+            ]
+        }
+    ]
+}]
