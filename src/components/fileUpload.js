@@ -20,7 +20,10 @@ class FileUpload extends Component {
         let result = await DocumentPicker.getDocumentAsync({
             
         });
-        alert(result.uri);
+        if(result.uri)
+            alert(result.uri);
+        else
+            alert('No File Seleted');
         
     }
 
