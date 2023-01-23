@@ -20,16 +20,7 @@ class TreeView extends Component {
               <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 >
-                <FamilyTree
-                rootColor='black'
-                childrenGap={10}
-                nodeTitleColor='red'
-                familyGap={5}
-                borderWidth={2}
-                titleColor= {theme.COLORS.THEME}
-                FID="Family1"
-                
-                />
+                <FamilyTree FID="Family1"/>
               </ScrollView>
             </SafeAreaView>
             
