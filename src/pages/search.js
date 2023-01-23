@@ -83,18 +83,20 @@ class Search extends Component {
     if (!this.state.isLoading) {
       data = this.state?.dataSource?.map((family, i) => {
         return (
-          <Card
-            key={`test-${i}`}
-            style={{
-              padding: theme.SIZES.BASE / 2,
-              marginBottom: 20,
-              backgroundColor: "#fff",
-            }}
-            title={family.Name}
-            caption={"Email: " + family.Email}
-            avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
-            imageStyle={{ borderRadius: 10 }}
-          ></Card>
+          <View key={'view-'+i} onTouchEnd={()=>{this.props.navigation.navigate('Profile')}} >
+            <Card
+              key={`card-${i}`}
+              style={{
+                padding: theme.SIZES.BASE / 2,
+                marginBottom: 20,
+                backgroundColor: "#fff",
+              }}
+              title={family.Name}
+              caption={"Email: " + family.Email}
+              avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
+              imageStyle={{ borderRadius: 10 }}
+            ></Card>
+          </View>
         );
       });
     }
