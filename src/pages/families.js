@@ -47,7 +47,9 @@ class FamilyList extends Component {
         }
         return (
             <ScrollView style={style}>
-                <Text style={{ marginBottom: 20 }}>Welcome to home!</Text>
+                <Text style={{ fontSize:20, marginBottom: 20 }}>Welcome to home!</Text>
+                
+                <Text style={{ fontSize:40, marginBottom: 20 }}>Family Details</Text>
                 {data}
             </ScrollView>
         );
