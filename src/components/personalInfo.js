@@ -12,7 +12,8 @@ class PersonalInfo extends Component {
         this.state = {
             Name: '',
             Qualification: '',
-            Age: undefined
+            Age: undefined,
+            Phone: undefined
         };
     }
     componentDidMount() {
