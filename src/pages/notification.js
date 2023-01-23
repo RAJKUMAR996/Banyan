@@ -49,7 +49,7 @@ class NotificationScreen extends Component {
                 var notificationDate = Date(content.CreatedDate);
                 return (
                     <Card key={`test-${i}`}
-                        style={{  marginBottom: 20 }}
+                        style={{ marginBottom: 20 }}
                         title={content.Message}
                         avatar={"http://i.pravatar.cc/100?id=pineaple" + i + 1}
                         imageStyle={{ borderRadius: 3 }}
@@ -59,12 +59,14 @@ class NotificationScreen extends Component {
                 );
             });
         }
-        return (<ScrollView style={{ padding: 10}}>
-            {data}
-
-            <Input rounded placeholder='Enter your update here' name='message' value={this.state.message} onChangeText={evt => { this.setState({ message: evt }) }} />
-            <Button size="large" style={{ marginBottom: 30 }} onPress={() => this.sendMsg()}>Send To Family</Button>
-        </ScrollView>);
+        return (
+            <View style={{flex:1}}>
+                <ScrollView style={{ padding: 10 }}>
+                    {data}
+                </ScrollView>
+                    <Input rounded placeholder='Enter your update here' name='message' value={this.state.message} onChangeText={evt => { this.setState({ message: evt }) }} />
+                    <Button size="large" style={{ marginBottom: 30 }} onPress={() => this.sendMsg()}>Send To Family</Button>
+            </View>);
     }
 
 }
